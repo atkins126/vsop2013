@@ -1,5 +1,14 @@
 ## VSOP2013 for Delphi / PlanetFun app / gravityIntegration / discovery of Neptune
 
+This repository started as a Delphi port of a planet ephemerides database VSOP2013.
+With time it grew to include:
+* Planet data tests.
+* binary data file utility.
+* N-to-N gravity integration by leapfrog method
+* app "PlanetFun" ( 3d  simulation )
+
+# VSOP2013 for Delphi
+
 VSOP 2013 (French: Variations Séculaires des Orbites Planétaires) is a high precision planetary position mathematical model, by G. FRANCOU & J.-L. SIMON (MAY 2013)
 
 This is a Delphi port of original Fortran code by the theory authors.  
@@ -40,20 +49,22 @@ Object T_VSOP2013_File in vsop2013.pas:
 * calculates heliocentric rectangular position and speed ( in UA and UA/day)
 
 # Sample apps
-Three sample apps are included. 
+Three sample apps are included in this repository. 
 * TestVSOP2013 - Load VSOP2013 text files. Test planet data. 2D visualization. Binary file utility. 
-* PlanetFun - More complex 3D app. Requires downloading and installing planet textures and VSOP2013 binary file. PlanetFun is available as executable for Android and iOS in stores. See below.
+* PlanetFun - Planetary system 3D simulation. Requires downloading and deploying planet textures from 3rd party site plus VSOP2013 binary file (see below). PlanetFun is available as executable for Windows. For Android and iOS download from stores (search "PlanetFun"). 
 * gravityIntegration - Integrates planet positions using Newton's universal gravity law and compares to VSOP2013. Shows charts of diferences.
 
 # Sample app 1: TestVSOP2013
-*TestVSOP2013* is a Firemonkey app. To use it you have to download at least one of the data files mentioned above, from VSOP2013 FTP repository ( current file is VSOP2013.p2000 )  
+*TestVSOP2013* is a Firemonkey app. 
+
+To use it you have to download at least one of the data files from VSOP2013 FTP repository ( current file is VSOP2013.p2000 )  
 
 * Download VSOP2013.p2000 from FTP repository 
-* Set filename and click [Load File] - This will freeze the app for a while, while it loads the 400 MB of text data.
+* Set filename and click [Load File] - The app will freeze for a while loading the 400 MB of text data.
 * To test a particular planet position, set JD epoch, planet id and click [Calc]
 * Check [x]Animate to show a solar system 2D animated chart.  Use trackbars to control scale and speed of the animation. 
 * Click [Run tests] to compare some calculation results with expected values from original vsop2013. 
-* [Save Binary file] for deploying with *PlanetFun*
+* [Save Binary file] for deploying with *PlanetFun*  ( creates file VSOP2013.p2000.bin )
 
 ![screenshot](screenshotTestVSOP2013.png)
 
@@ -79,8 +90,10 @@ I did not test the original Fortran code, so I used the results on original file
 ## Sample app 2: PlanetFun
 ![screenshot](planetfun/bannerPlanetFun.png)
 
-Planet Fun is a Firemonkey 3D solar system working model app. It uses VSOP2013 binary files to calculate planet positions.
-Full souce code is available at:
+Planet Fun is a Firemonkey solar system 4D simulation. 
+It uses VSOP2013 to calculate planet positions for the 9 Planets ( or 8 planets + Pluto ).
+
+Source code:  
     https://github.com/omarreis/vsop2013/tree/master/planetfun
     
 PlanetFun readme:
@@ -96,18 +109,18 @@ In order to compile and run this app, you will need to:
 # PlanetFun app for iOS
 * https://apps.apple.com/us/app/planet-fun/id1525941640
 
-# Installer for Windows 
-Installs TestVSOP2013.exe, PlanetFun.exe, gravityIntegration.exe and VSOP2013.p2000.bin
-* https://github.com/omarreis/vsop2013/releases/download/1.1/setupVSOP2013_win32.exe
+# PlanetFun for Windows 
+Installs executables TestVSOP2013.exe, PlanetFun.exe, gravityIntegration.exe and assets.
+* https://github.com/omarreis/vsop2013/releases/download/1.2/setupPlanetFun_win32_v11.exe
 
 ## Sample app 3: gravityIntegration 
 
-Integrates planet positions using Newton's universal gravity law and compares to VSOP2013. Shows charts of diferences.
+Windows app. Integrates planet positions using Newton's universal gravity law and compares to VSOP2013. Shows charts of diferences (residues).
 
 * see: https://github.com/omarreis/vsop2013/tree/master/gravityIntegration
 
 ## discovery of planet Neptune
-Numbers related to the discovery of the planet:
+Numbers related to the discovery of the planet Neptune, in 1846. 
 * see: https://github.com/omarreis/vsop2013/blob/master/gravityIntegration/NeptuneDiscovery/README.md
 
 
